@@ -19,15 +19,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Post',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True,
+                                           serialize=False, verbose_name='ID'
+                                           )),
                 ('titulo_post', models.CharField(max_length=255)),
-                ('data_post', models.DateField(default=django.utils.timezone.now)),
+                ('data_post', models.DateField(default=django.utils.
+                                               timezone.now)),
                 ('conteudo_post', models.TextField()),
                 ('excerto_post', models.TextField()),
-                ('imagem_post', models.ImageField(blank=True, null=True, upload_to='post_img/%Y/%m/%d')),
+                ('imagem_post', models.ImageField(blank=True, null=True,
+                                                  upload_to='post_img/%Y/%m/%d'
+                                                  )),
                 ('publicado_post', models.BooleanField(default=False)),
-                ('autor_post', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL)),
-                ('categoria_post', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='categorias.categoria')),
+                ('autor_post', models.ForeignKey(on_delete=django.db.models.
+                                                 deletion.DO_NOTHING,
+                                                 to=settings.AUTH_USER_MODEL)),
+                ('categoria_post', models.ForeignKey(blank=True, null=True,
+                                                     on_delete=django.
+                                                     db.models.deletion.
+                                                     DO_NOTHING,
+                                                     to='categorias.categoria'
+                                                     )),
             ],
         ),
     ]
