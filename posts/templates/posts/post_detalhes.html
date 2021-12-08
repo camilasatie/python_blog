@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block titulo %}{{ post.titulo_post }}{% endblock %}
+
+{% block conteudo %}
+    <!-- POST -->
+    <div class="container">
+        <div class="row pt-5">
+            <div class="col-xl"></div>
+            <div class="col-xl-8 text-center">
+                <h2>{{ post.titulo_post }}</h2>
+                <h5>{{ post.excerto_post }}</h5>
+                <p class="text-muted mt-4">
+                    <small>
+                        {{ post.autor_post }} | {{ post.data_post }} | {{ post.categoria_post }}
+                    </small>
+                </p>
+            </div>
+            <div class="col-xl"></div>
+        </div>
+
+        <div class="row pt-5">
+            <div class="col-xl"></div>
+            <div class="col-xl-8">
+
+                {% if post.imagem_post %}
+                    <img class="img-fluid pb-5 " src="{{ post.imagem_post.url}}" alt="{{ post.titulo_post }}">
+                {% endif %}
+
+                {{ post.conteudo_post|safe }}
+            </div>
+            <div class="col-xl"></div>
+        </div>
+
+
+        <div class="row pt-5">
+            <div class="col-xl"></div>
+            <div class="col-xl-8">
+                <h2 class="my-3">Comentários (1)</h2>
+
+
+
+                <h5 class="mb-2 mt-5">Luiz Otávio disse:</h5>
+                <small class="text-muted">hoje</small>
+                <p class="mb-1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                    ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
+                    montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
+                    pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel,
+                    aliquet nec, vulputate&lt;</p>
+
+
+
+            </div>
+            <div class="col-xl"></div>
+        </div>
+
+
+        <div class="row pt-5">
+            <div class="col-xl"></div>
+            <div class="col-xl-8">
+                <h2 class="my-3">Deixe um comentário</h2>
+
+                <form method="POST" action="#envia_comentario">
+                    <input type="hidden" name="csrfmiddlewaretoken"
+                        value="MUiT5cD1u7raeEOr9w9srr4cbQkYc5OTRnWT1cZcIiYWXL8cJqmAl9bxFc7j26yn">
+                    <table class="table">
+                        <tr>
+                            <th><label for="id_author_name">Author name:</label></th>
+                            <td><input type="text" name="author_name" maxlength="255" required
+                                    id="id_author_name"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="id_email">Email:</label></th>
+                            <td><input type="email" name="email" maxlength="254" required id="id_email">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="id_comment">Comment:</label></th>
+                            <td>
+                                <textarea name="comment" id="id_comment"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input id="envia_comentario" type="submit" class="btn btn-primary"
+                                    value="Enviar">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="col-xl"></div>
+        </div>
+    </div>
+    <!-- POST -->
+
+{% endblock %}
